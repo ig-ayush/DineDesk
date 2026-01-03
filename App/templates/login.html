@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DineDesk</title>
+    <title>Log In</title>
     {% load static %}
-
-    <link rel="stylesheet" href="{% static 'App/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'App/login.css' %}" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -16,7 +15,7 @@
     />
   </head>
   <body>
-    <!-- Navbar -->
+    <!-- Nav Bar -->
     <nav>
       <div class="nav-content">
         <div class="right-side">
@@ -35,7 +34,7 @@
               </a>
             </li>
             <li class="profile">
-              <a href="profile" title="profile" id="profile">
+              <a href="/" title="profile" id="profile">
                 <i class="fa-solid fa-user"></i>
               </a>
             </li>
@@ -49,5 +48,43 @@
         </div>
       </div>
     </nav>
+
+    <!-- Form -->
+    <main>
+      <div class="login-container">
+        <form class="login-form" action="" method="POST">
+          {% csrf_token %}
+          <h1>Welcome Back!</h1>
+          <div id="input-feilds">
+            <div class="input-container">
+              <input
+                id="email"
+                placeholder="Enter your email"
+                class="input-field"
+                type="email"
+                name="email"
+              />
+              <label for="input-field" class="input-label">Enter email</label>
+              <span class="input-highlight"></span>
+            </div>
+            <div class="input-container">
+              <input
+                id="password"
+                placeholder="Enter your password"
+                class="input-field"
+                type="password"
+                name="password"
+              />
+              <label for="input-field" class="input-label"
+                >Enter Password</label
+              >
+              <span class="input-highlight"></span>
+            </div>
+          </div>
+
+          <button id="logIn" type="submit">LogIn</button>
+        </form>
+      </div>
+    </main>
   </body>
 </html>
