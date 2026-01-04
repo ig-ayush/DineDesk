@@ -6,6 +6,7 @@
     <title>Log In</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'App/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'App/navbar.css' %}" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -50,47 +51,51 @@
     </nav>
 
     <!-- Form -->
-    <main>
-      <div class="login-container">
-        <form class="login-form" action="" method="POST">
-          {% csrf_token %}
-          <h1>Welcome Back!</h1>
-          <div id="input-feilds">
-            <div class="input-container">
-              <input
-                id="email"
-                placeholder="Enter your email"
-                class="input-field"
-                type="text"
-                name="email"
-                required
-              />
-              <label for="input-field" class="input-label">Enter email</label>
-              <span class="input-highlight"></span>
-            </div>
-            <div class="input-container">
-              <input
-                id="password"
-                placeholder="Enter your password"
-                class="input-field"
-                type="password"
-                name="password"
-                required
-              />
-              <label for="input-field" class="input-label"
-                >Enter Password</label
-              >
-              <span class="input-highlight"></span>
-            </div>
-          </div>
+ <main>
+    <div class="container-fluid">
+      <form class="auth" id="auth" method="post">
 
-          <button id="logIn" type="submit">LogIn</button>
-        </form>
-        <h3>
-          <a href="/signup-account"> Sign Up </a>
-        </h3>
-      </div>
-     
-    </main>
+        {% csrf_token %}
+        <h1 style="margin-bottom: 10px;">Welcome Back!</h1>
+        <div class="input-container">
+          <input
+            id="email"
+            type="email"
+            class="input-field"
+            placeholder="Enter your email"
+            name="email"
+            required
+          />
+          <label for="email" class="input-label">Enter email</label>
+          <span class="input-highlight"></span>
+        </div>
+
+        <div class="input-container">
+          <input
+            id="password"
+            type="password"
+            class="input-field"
+            placeholder="Enter your password"
+            name="password"
+            required
+          />
+          <label for="password" class="input-label">Enter password</label>
+          <span class="input-highlight"></span>
+        </div>
+
+        <button id="logIn" type="submit">Log In</button>
+
+        <p title="Sign Up" style="font-size: 1.1rem; font-weight: 600;">
+          Don’t have an account?
+          <span>
+            <a href="/signup-account" id="signUp">Sign up</a>
+          </span>
+          now!
+        </p>
+      </form>
+    </div>
+  </div>
+</main>
+
   </body>
 </html>

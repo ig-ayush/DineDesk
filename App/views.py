@@ -16,10 +16,15 @@ def profile_view(request):
 def login_form(request):
 
     if request.method == "POST":
-        username = request.POST["email"]
+        email = request.POST["email"]
         password = request.POST["password"]
 
-        user = authenticate(request, username=username, password=password)
+        try:
+            user_obj = User.objects.get(email=email)
+
+            user = authenticate(request, username=user_obj.username, password=password)
+        except User.DoesNotExist:
+            user = None
 
         if user:
             login(request, user)
@@ -28,7 +33,7 @@ def login_form(request):
             messages.success(request, "Login to account")
             return redirect(next_url if next_url else "/profile/")
         
-        messages.error(request, "Invalid username or password")
+        messages.error(request, "Invalid email or password")
         return redirect('/login')
 
     return render(request, 'login.html')

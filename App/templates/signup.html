@@ -7,6 +7,7 @@
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'App/signup.css' %}" />
+    <link rel="stylesheet" href="{% static 'App/navbar.css' %}" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -50,57 +51,86 @@
       </div>
     </nav>
 
-    <form action="" method="post">
-      {% csrf_token %}
-      <h1>Create Your Account</h1>
-      <div class="input-container">
-        <input
-          id="username"
-          placeholder="Enter your username"
-          class="input-field"
-          type="text"
-          name="username"
-        />
-        <label for="input-field" class="input-label">Enter username</label>
-        <span class="input-highlight"></span>
-      </div>
-      <div class="input-container">
-        <input
-          id="email"
-          placeholder="Enter your email"
-          class="input-field"
-          type="email"
-          name="email"
-        />
-        <label for="input-field" class="input-label">Enter email</label>
-        <span class="input-highlight"></span>
-      </div>
-      <div class="input-container">
-        <input
-          id="password"
-          placeholder="Enter your password"
-          class="input-field"
-          type="password"
-          name="password"
-        />
-        <label for="input-field" class="input-label">Enter Password</label>
-        <span class="input-highlight"></span>
-      </div>
-      <div class="input-container">
-        <input
-          id="confirm_password"
-          placeholder="Enter your confirm_password"
-          class="input-field"
-          type="confirm_password"
-          name="confirm_password"
-        />
-        <label for="input-field" class="input-label"
-          >Enter confirm Password</label
-        >
-        <span class="input-highlight"></span>
-      </div>
+    <main>
+      <div class="container-fluid">
+        <div class="container" id="container">
+          <div class="container-fluid">
+            <form class="auth" id="auth" method="post">
+              {% csrf_token %}
+              <h2 style="margin-bottom: 10px; font-size: 1.8rem;">Create Your Account</h2>
 
-      <button type="submit">Sign Up</button>
-    </form>
+              <!-- Input fields -->
+              <div class="input-con">
+                <div class="input-container">
+                  <input
+                    id="name"
+                    type="text"
+                    class="input-field"
+                    placeholder="Username"
+                    name="username"
+                    required
+                  />
+                  <label for="name" class="input-label">User Name</label>
+                  <span class="input-highlight"></span>
+                </div>
+
+                <div class="input-container">
+                  <input
+                    id="email"
+                    type="email"
+                    class="input-field"
+                    placeholder="Enter your email"
+                    name="email"
+                    required
+                  />
+                  <label for="email" class="input-label">Enter email</label>
+                  <span class="input-highlight"></span>
+                </div>
+
+                <div class="input-container">
+                  <input
+                    id="password"
+                    type="password"
+                    class="input-field"
+                    placeholder="Enter password"
+                    name="password"
+                    required
+                  />
+                  <label for="password" class="input-label"
+                    >Enter password</label
+                  >
+                  <span class="input-highlight"></span>
+                </div>
+
+                <div class="input-container">
+                  <input
+                    id="copass"
+                    type="password"
+                    class="input-field"
+                    placeholder="Confirm password"
+                    name="confirm_password"
+                    required
+                  />
+                  <label for="copass" class="input-label">
+                    Confirm password
+                  </label>
+                  <span class="input-highlight"></span>
+                </div>
+              </div>
+
+              <button id="signUpBtn" type="submit">Sign Up</button>
+
+              <p title="Login">
+                Already have an account?
+                <span>
+                  <a href="/profile" id="profile">Login here</a>
+                </span>
+                !
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
