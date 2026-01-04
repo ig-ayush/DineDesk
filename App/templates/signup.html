@@ -1,11 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-</head>
-<body>
-    <h1>Sign Up</h1>
-</body>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'App/signup.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Nav Bar -->
+    <nav>
+      <div class="nav-content">
+        <div class="right-side">
+          {% load static %}
+          <img
+            src="{% static 'App/logo.svg' %}"
+            alt="DineDesk Logo"
+            height="70"
+          />
+        </div>
+        <div class="left-side">
+          <ol class="nav-options">
+            <li class="cart">
+              <a href="/" title="cart" id="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </a>
+            </li>
+            <li class="profile">
+              <a href="/" title="profile" id="profile">
+                <i class="fa-solid fa-user"></i>
+              </a>
+            </li>
+            <li>
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </nav>
+
+    <form action="" method="post">
+      {% csrf_token %}
+      <h1>Create Your Account</h1>
+      <div class="input-container">
+        <input
+          id="username"
+          placeholder="Enter your username"
+          class="input-field"
+          type="text"
+          name="username"
+        />
+        <label for="input-field" class="input-label">Enter username</label>
+        <span class="input-highlight"></span>
+      </div>
+      <div class="input-container">
+        <input
+          id="email"
+          placeholder="Enter your email"
+          class="input-field"
+          type="email"
+          name="email"
+        />
+        <label for="input-field" class="input-label">Enter email</label>
+        <span class="input-highlight"></span>
+      </div>
+      <div class="input-container">
+        <input
+          id="password"
+          placeholder="Enter your password"
+          class="input-field"
+          type="password"
+          name="password"
+        />
+        <label for="input-field" class="input-label">Enter Password</label>
+        <span class="input-highlight"></span>
+      </div>
+      <div class="input-container">
+        <input
+          id="confirm_password"
+          placeholder="Enter your confirm_password"
+          class="input-field"
+          type="confirm_password"
+          name="confirm_password"
+        />
+        <label for="input-field" class="input-label"
+          >Enter confirm Password</label
+        >
+        <span class="input-highlight"></span>
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+  </body>
 </html>
