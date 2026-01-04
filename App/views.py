@@ -13,21 +13,58 @@ def index(request):
 def profile_view(request):
     return render(request, 'profile.html')
 
-def login(request):
+def login_form(request):
 
     if request.method == "POST":
-        email = request.POST["email"]
+        username = request.POST["email"]
         password = request.POST["password"]
 
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(request, username=username, password=password)
 
         if user:
             login(request, user)
 
             next_url = request.GET.get("next")
-            return redirect(next_url if next_url else "profile")
+            messages.success(request, "Login to account")
+            return redirect(next_url if next_url else "/profile/")
         
-        HttpResponse("Invalid username or password")
+        messages.error(request, "Invalid username or password")
         return redirect('/login')
 
     return render(request, 'login.html')
+
+def signup(request):
+
+    if request.method == "POST":
+
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        if password != confirm_password:
+            messages.error(request, "Passwords do not match")
+            return redirect("/signup-account")
+        
+        if User.objects.filter(username=username).exists():
+            messages.error(request,"Username alredy exits")
+            return redirect("/signup-account")
+        
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email already registered")
+            return redirect("/signup-account")
+        
+        User.objects.create_user(
+            username=username,
+            email=email,
+            password=password
+        )
+
+        messages.success(request, "Account created successfully. Please login.")
+        return redirect("/login")
+
+    return render(request, 'signup.html')
+
+def logout_account(request):
+    logout(request)
+    return redirect('/login')
