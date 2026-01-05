@@ -1,136 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
+{% extends 'base.html' %} 
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'App/signup.css' %}" />
-    <link rel="stylesheet" href="{% static 'App/navbar.css' %}" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <!-- Nav Bar -->
-    <nav>
-      <div class="nav-content">
-        <div class="right-side">
-          {% load static %}
-          <img
-            src="{% static 'App/logo.svg' %}"
-            alt="DineDesk Logo"
-            height="70"
-          />
-        </div>
-        <div class="left-side">
-          <ol class="nav-options">
-            <li class="cart">
-              <a href="/" title="cart" id="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
-              </a>
-            </li>
-            <li class="profile">
-              <a href="/" title="profile" id="profile">
-                <i class="fa-solid fa-user"></i>
-              </a>
-            </li>
-            <li>
-              <label class="switch">
-                <input type="checkbox" />
-                <span class="slider"></span>
-              </label>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </nav>
+{% block content %}
 
-    <main>
+{% load static %}
+<link rel="stylesheet" href="{% static 'App/signup.css' %}" />
+<main>
+  <div class="container-fluid">
+    <div class="container" id="container">
       <div class="container-fluid">
-        <div class="container" id="container">
-          <div class="container-fluid">
-            <form class="auth" id="auth" method="post">
-              {% csrf_token %}
-              <h2 style="margin-bottom: 10px; font-size: 1.8rem;">Create Your Account</h2>
+        <form class="auth" id="auth" method="post">
+          {% csrf_token %}
+          <h2 style="margin-bottom: 10px; font-size: 1.8rem">
+            Create Your Account
+          </h2>
 
-              <!-- Input fields -->
-              <div class="input-con">
-                <div class="input-container">
-                  <input
-                    id="name"
-                    type="text"
-                    class="input-field"
-                    placeholder="Username"
-                    name="username"
-                    required
-                  />
-                  <label for="name" class="input-label">User Name</label>
-                  <span class="input-highlight"></span>
-                </div>
+          <!-- Input fields -->
+          <div class="input-con">
+            <div class="input-container">
+              <input
+                id="name"
+                type="text"
+                class="input-field"
+                placeholder="Username"
+                name="username"
+                required
+              />
+              <label for="name" class="input-label">User Name</label>
+              <span class="input-highlight"></span>
+            </div>
 
-                <div class="input-container">
-                  <input
-                    id="email"
-                    type="email"
-                    class="input-field"
-                    placeholder="Enter your email"
-                    name="email"
-                    required
-                  />
-                  <label for="email" class="input-label">Enter email</label>
-                  <span class="input-highlight"></span>
-                </div>
+            <div class="input-container">
+              <input
+                id="email"
+                type="email"
+                class="input-field"
+                placeholder="Enter your email"
+                name="email"
+                required
+              />
+              <label for="email" class="input-label">Enter email</label>
+              <span class="input-highlight"></span>
+            </div>
 
-                <div class="input-container">
-                  <input
-                    id="password"
-                    type="password"
-                    class="input-field"
-                    placeholder="Enter password"
-                    name="password"
-                    required
-                  />
-                  <label for="password" class="input-label"
-                    >Enter password</label
-                  >
-                  <span class="input-highlight"></span>
-                </div>
+            <div class="input-container">
+              <input
+                id="password"
+                type="password"
+                class="input-field"
+                placeholder="Enter password"
+                name="password"
+                required
+              />
+              <label for="password" class="input-label">Enter password</label>
+              <span class="input-highlight"></span>
+            </div>
 
-                <div class="input-container">
-                  <input
-                    id="copass"
-                    type="password"
-                    class="input-field"
-                    placeholder="Confirm password"
-                    name="confirm_password"
-                    required
-                  />
-                  <label for="copass" class="input-label">
-                    Confirm password
-                  </label>
-                  <span class="input-highlight"></span>
-                </div>
-              </div>
-
-              <button id="signUpBtn" type="submit">Sign Up</button>
-
-              <p title="Login">
-                Already have an account?
-                <span>
-                  <a href="/profile" id="profile">Login here</a>
-                </span>
-                !
-              </p>
-            </form>
+            <div class="input-container">
+              <input
+                id="copass"
+                type="password"
+                class="input-field"
+                placeholder="Confirm password"
+                name="confirm_password"
+                required
+              />
+              <label for="copass" class="input-label"> Confirm password </label>
+              <span class="input-highlight"></span>
+            </div>
           </div>
-        </div>
+
+          <button id="signUpBtn" type="submit">Sign Up</button>
+
+          <p title="Login">
+            Already have an account?
+            <span>
+              <a href="/profile" id="profile">Login here</a>
+            </span>
+            !
+          </p>
+        </form>
       </div>
-    </main>
-  </body>
-</html>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
