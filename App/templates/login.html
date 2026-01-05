@@ -1,96 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log In</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'App/login.css' %}" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <!-- Nav Bar -->
-    <nav>
-      <div class="nav-content">
-        <div class="right-side">
-          {% load static %}
-          <img
-            src="{% static 'App/logo.svg' %}"
-            alt="DineDesk Logo"
-            height="70"
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static  %}
+<link rel="stylesheet" href="{% static 'App/login.css' %}" />
+ <main>
+    <div class="container-fluid">
+      <form class="auth" id="auth" method="post">
+
+        {% csrf_token %}
+        <h1 style="margin-bottom: 10px;">Welcome Back!</h1>
+        <div class="input-container">
+          <input
+            id="email"
+            type="email"
+            class="input-field"
+            placeholder="Enter your email"
+            name="email"
+            required
           />
+          <label for="email" class="input-label">Enter email</label>
+          <span class="input-highlight"></span>
         </div>
-        <div class="left-side">
-          <ol class="nav-options">
-            <li class="cart">
-              <a href="/" title="cart" id="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
-              </a>
-            </li>
-            <li class="profile">
-              <a href="/" title="profile" id="profile">
-                <i class="fa-solid fa-user"></i>
-              </a>
-            </li>
-            <li>
-              <label class="switch">
-                <input type="checkbox" />
-                <span class="slider"></span>
-              </label>
-            </li>
-          </ol>
+
+        <div class="input-container">
+          <input
+            id="password"
+            type="password"
+            class="input-field"
+            placeholder="Enter your password"
+            name="password"
+            required
+          />
+          <label for="password" class="input-label">Enter password</label>
+          <span class="input-highlight"></span>
         </div>
-      </div>
-    </nav>
 
-    <!-- Form -->
-    <main>
-      <div class="login-container">
-        <form class="login-form" action="" method="POST">
-          {% csrf_token %}
-          <h1>Welcome Back!</h1>
-          <div id="input-feilds">
-            <div class="input-container">
-              <input
-                id="email"
-                placeholder="Enter your email"
-                class="input-field"
-                type="text"
-                name="email"
-                required
-              />
-              <label for="input-field" class="input-label">Enter email</label>
-              <span class="input-highlight"></span>
-            </div>
-            <div class="input-container">
-              <input
-                id="password"
-                placeholder="Enter your password"
-                class="input-field"
-                type="password"
-                name="password"
-                required
-              />
-              <label for="input-field" class="input-label"
-                >Enter Password</label
-              >
-              <span class="input-highlight"></span>
-            </div>
-          </div>
+        <button id="logIn" type="submit">Log In</button>
 
-          <button id="logIn" type="submit">LogIn</button>
-        </form>
-        <h3>
-          <a href="/signup-account"> Sign Up </a>
-        </h3>
-      </div>
-     
-    </main>
-  </body>
-</html>
+        <p title="Sign Up" style="font-size: 1.1rem; font-weight: 600;">
+          Don’t have an account?
+          <span>
+            <a href="/signup-account" id="signUp">Sign up</a>
+          </span>
+          now!
+        </p>
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

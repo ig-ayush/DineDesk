@@ -1,96 +1,29 @@
-* {
+body {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Switch */
-.switch {
-  font-size: 17px;
-  position: relative;
-  display: inline-block;
-  width: 2.5em;
-  height: 1.3em;
+main {
+  margin-top: 80px;
 }
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  inset: 0;
-  border: 2px solid #414141;
-  border-radius: 50px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 0.8rem;
-  width: 0.8rem;
-  left: 0.2em;
-  bottom: 0.1em;
-  background-color: rgb(26, 25, 25);
-  border-radius: inherit;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.switch input:checked + .slider {
-  box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);
-  border: 2px solid #0974f1;
-}
-
-.switch input:checked + .slider:before {
-  transform: translateX(1.2em);
-}
-
-/* Nav-bar */
-.nav-content {
-  padding: 20px 90px 0px 90px;
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(229, 229, 229);
-}
-
-.nav-content .left-side {
-  width: 20%;
-}
-.nav-content .left-side ol {
-  display: flex;
-  justify-content: space-evenly;
-  list-style: none;
-  font-size: 2rem;
-}
-.nav-content .left-side ol li i {
-  color: #1f2937;
-}
-
-.nav-content .left-side ol li {
-  padding: 12px;
-  border-radius: 10px;
-}
-
-/* Login Page Style */
-.login-container {
-  width: 100%;
-  height: 70vh;
+.container-fluid {
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-/* Form */
-form.login-form {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+.auth {
+  width: 35%;
+  height: 85%;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+
+/* Input fieds */
 
 /* Input container */
 .input-container {
@@ -143,8 +76,8 @@ form.login-form {
   width: 60%;
 }
 
+/* Buttons */
 
-/* Button */
 button {
   width: 110px;
   height: 50px;
@@ -167,4 +100,32 @@ button:hover {
 button:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+.auth p {
+  margin-left: 50px;
+}
+.auth a {
+  text-decoration: underline;
+  font-weight: bolder;
+  color: #1f2937;
+}
+
+.cart-msg {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  padding: 15px;
+  box-shadow: 10px 10px 40px rgba(75, 74, 74, 0.5);
+  margin-right: 15px;
+  width: 320px;
+  height: max-content;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  transition: 0.7s ease-in-out;
+  transform: translateX(380px);
+}
+
+body.dark-mode .input-field {
+  color: #fff;
 }

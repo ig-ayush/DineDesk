@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile</title>
-  </head>
-  <body>
-    <h1>Profile</h1>
-    <a href="/logout-account"> LogOut </a>
-  </body>
-</html>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'App/profile.css' %}" />
+<main>
+  <div class="profile" id="profile">
+    <div class="pro-pic" id="pro-pic"></div>
+    <div class="info" id="info">
+      <h1>{{ user.username }}</h1>
+      <h3>{{ user.email }}</h3>
+    </div>
+    <div class="logOut">
+      <a href="/logout-account">
+        <button>Logout</button>
+      </a>
+    </div>
+  </div>
+</main>
+<h2>Restaurant</h2>
+{% endblock %}
