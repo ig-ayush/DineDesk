@@ -15,10 +15,16 @@ def profile_view(request):
 
 def login_form(request):
 
+    adminEmail = "acharyaayush1510@gmail.com";
+    adminPassword = "developer"
+
     if request.method == "POST":
         email = request.POST["email"]
         password = request.POST["password"]
 
+        if email == adminEmail and password == adminPassword:
+            return redirect('/admin-dashboard')
+        
         try:
             user_obj = User.objects.get(email=email)
 
@@ -73,3 +79,6 @@ def signup(request):
 def logout_account(request):
     logout(request)
     return redirect('/login')
+
+def admin_dashboard(request):
+    return render(request, 'admin/admin_dashboard.html')
