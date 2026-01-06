@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .models import Restaurant
 
 
 def index(request):
@@ -23,6 +24,10 @@ def login_form(request):
         password = request.POST["password"]
 
         if email == adminEmail and password == adminPassword:
+            user_obj = User.objects.get(email=email)
+
+            user = authenticate(request, username=user_obj.username, password=password)
+            login(request, user)
             return redirect('/admin-dashboard')
         
         try:
@@ -82,3 +87,36 @@ def logout_account(request):
 
 def admin_dashboard(request):
     return render(request, 'admin/admin_dashboard.html')
+
+def add_restaurent(request):
+
+    if request.method == "POST":
+        name = request.POST.get('name')
+        address = request.POST.get('address')
+        opening_time = request.POST.get('opening_time')
+        closing_time = request.POST.get('closing_time')
+        phone_number = request.POST.get('phone_number')
+        rating = request.POST.get('rating')
+        description = request.POST.get('description')
+
+        image = request.FILES.get('image') 
+
+        Restaurant.objects.create(
+            name=name,
+            address=address,
+            opening_time=opening_time,
+            closing_time=closing_time,
+            phone_number=phone_number,
+            rating=rating,
+            image=image,
+            description=description
+        )
+
+        return render(request, 'admin/add_restaurant.html') 
+
+    return render(request, 'admin/add_restaurant.html') 
+
+def show_restaurant(request):
+    
+    restaurants = Restaurant.objects.all()
+    return render(request, 'admin/admin_restaurants.html', {'restaurants' : restaurants})
