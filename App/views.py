@@ -82,3 +82,9 @@ def logout_account(request):
 
 def admin_dashboard(request):
     return render(request, 'admin/admin_dashboard.html')
+
+def open_addRes(request):
+    return render(request, 'admin/add_restaurant.html')
+
+def show_restaurant(request):
+    return render(request, 'admin/admin_restaurants.html')
