@@ -1,5 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %} {% load static %}
+<title>DineDesk &#8226; Admin Dashboard</title>
+<link rel="stylesheet" href="{% static 'App/admin_dash.css' %}" />
+<main>
+  <div class="admin-con">
+    <div class="admin-panal">
+      <h1>Admin Dashboard</h1>
+      <a href="add-restaurant">
+        <button>Add Restaurant</button>
+      </a>
+      <a href="admin-restaurant">
+        <button>Show Restaurant</button>
+      </a>
+    </div>
+  </div>
+</main>
 
-{% block content %}
-<h1>Admin Dashboard</h1>
 {% endblock %}
