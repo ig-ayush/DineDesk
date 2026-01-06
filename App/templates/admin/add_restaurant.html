@@ -1,7 +1,36 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
-<main>
-  <h1>add Restaurant</h1>
-</main>
+{% block content %}
+<h2>Add Restaurant</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label>Restaurant Name</label>
+    <input type="text" name="name" required>
+
+    <label>Address</label>
+    <textarea name="address" required></textarea>
+
+    <label>Opening Time</label>
+    <input type="time" name="opening_time" required>
+
+    <label>Closing Time</label>
+    <input type="time" name="closing_time" required>
+
+    <label>Phone Number</label>
+    <input type="text" name="phone_number" required>
+
+    <label>Rating</label>
+    <input type="number" step="0.1" name="rating" required>
+
+    <label>Restaurant Image</label>
+    <input type="file" name="image" required>
+
+    <label>Description</label>
+    <textarea name="description"></textarea>
+
+    <button type="submit">Add Restaurant</button>
+</form>
 
 {% endblock %}
