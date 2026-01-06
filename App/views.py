@@ -23,6 +23,10 @@ def login_form(request):
         password = request.POST["password"]
 
         if email == adminEmail and password == adminPassword:
+            user_obj = User.objects.get(email=email)
+
+            user = authenticate(request, username=user_obj.username, password=password)
+            login(request, user)
             return redirect('/admin-dashboard')
         
         try:
