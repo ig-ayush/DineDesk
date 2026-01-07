@@ -1,32 +1,53 @@
-{% extends 'base.html' %} {% block content %}
-<h2>Restaurants</h2>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'App/show_restaurant.css' %}" />
+<main class="store-page">
+  <div class="store-container">
+    <div class="restaurant-grid">
+      {% for restaurant in restaurants %}
+      <div class="restaurant-card">
+        <div class="image-box">
+          {% if restaurant.image %}
+          <img src="{{ restaurant.image.url }}" alt="{{ restaurant.name }}" />
+          {% endif %}
+        </div>
 
-<div class="restaurant-container">
-  {% for restaurant in restaurants %}
-  <div class="restaurant-card">
-    {% if restaurant.image %}
-    <img src="{{ restaurant.image.url }}" alt="{{ restaurant.name }}" />
-    {% endif %}
+        <div class="card-body">
+          <div class="title-row">
+            <h3>{{ restaurant.name }}</h3>
+            <span class="rating">{{ restaurant.rating }}</span>
+          </div>
 
-    <h3>{{ restaurant.name }}</h3>
+          <p class="category">{{ restaurant.description|truncatechars:40 }}</p>
 
-    <p><strong>Rating:</strong> {{ restaurant.rating }}</p>
+          <p class="location">{{ restaurant.address }}</p>
 
-    <p>
-      <strong>Timings:</strong>
-      {{ restaurant.opening_time }} - {{ restaurant.closing_time }}
-    </p>
-
-    <p><strong>Phone:</strong> {{ restaurant.phone_number }}</p>
-
-    <p><strong>Address:</strong> {{ restaurant.address }}</p>
-
-    <p class="description">{{ restaurant.description }}</p>
-
-    <a href="#" class="view-menu-btn">View Menu</a>
+          <div class="meta">
+            <span
+              >{{ restaurant.opening_time }} - {{ restaurant.closing_time
+              }}</span
+            >
+            <span>{{ restaurant.phone_number }}</span>
+          </div>
+        </div>
+        <!-- ADMIN ACTIONS -->
+        <div class="admin-actions">
+          <a href="/" class="btn edit"
+            >Edit</a
+          >
+          <a href="/" class="btn menu"
+            >Menu</a
+          >
+          <a
+            href="/"
+            class="btn delete"
+            >Delete</a
+          >
+        </div>
+      </div>
+      {% empty %}
+      <p class="empty-text">No restaurants available.</p>
+      {% endfor %}
+    </div>
   </div>
-  {% empty %}
-  <p>No restaurants available.</p>
-  {% endfor %}
-</div>
+</main>
 {% endblock %}
