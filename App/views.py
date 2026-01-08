@@ -8,7 +8,8 @@ from .models import Restaurant, Dish
 
 
 def index(request):
-    return render(request, 'index.html')
+    restaurants = Restaurant.objects.all()
+    return render(request, 'index.html', {'restaurants': restaurants})
 
 @login_required
 def profile_view(request):
@@ -213,3 +214,7 @@ def delete_dish(request, dish_id):
 
     return redirect('admin-menu', restaurant_id=restaurant_id)
 
+def restaurant_menu(request, restaurant_id):
+    restaurant = Restaurant.objects.get(id= restaurant_id)
+    dishes = restaurant.dishes.all()
+    return render(request, 'menu.html', {'restaurant': restaurant,'dishes': dishes})

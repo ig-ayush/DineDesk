@@ -17,7 +17,8 @@ urlpatterns = [
     path('add-dish/<int:restaurant_id>', views.add_dish, name='add-dish'),
     path('edit-dish/<int:dish_id>', views.edit_dish, name='edit-dish'),
     path('delete-restaurant/<int:restaurant_id>', views.delete_restaurant, name='delete-restaurant'),
-    path('delete-dish/<int:dish_id>', views.delete_dish, name='delete-dish')
+    path('delete-dish/<int:dish_id>', views.delete_dish, name='delete-dish'),
+    path('restaurant-menu/<int:restaurant_id>', views.restaurant_menu, name='restaurant-menu')
 ]
 
 if settings.DEBUG:

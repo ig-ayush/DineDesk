@@ -1,5 +1,68 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'App/homePage.css' %}" />
+<link rel="stylesheet" href="{% static 'App/show_restaurant.css' %}" />
+<section class="hero">
+  <div class="hero-overlay"></div>
 
-{% block content %}
-<h1>Index.html</h1>
+  <div class="hero-content">
+    <h1>Discover & Order <span>Delicious Food</span></h1>
+
+    <p>
+      Explore healthy veg & non-veg dishes from the best restaurants near you.
+    </p>
+
+    <a href="#restaurants" class="hero-btn"> Explore Restaurants </a>
+  </div>
+</section>
+
+<main class="store-page">
+  <div class="store-container">
+    <div class="restaurant-grid">
+      {% for restaurant in restaurants %}
+      <div class="restaurant-card">
+
+        <div class="image-box">
+          {% if restaurant.image %}
+          <img src="{{ restaurant.image.url }}" alt="{{ restaurant.name }}" />
+          {% endif %}
+
+          <!-- NEW FEATURE -->
+          <a
+            href="{% url 'restaurant-menu' restaurant.id %}"
+            class="view-menu-btn"
+          >
+            View Menu
+          </a>
+        </div>
+
+        <div class="card-body">
+          <div class="title-row">
+            <h3>{{ restaurant.name }}</h3>
+            <span class="rating">{{ restaurant.rating }}</span>
+          </div>
+
+          <p class="category">
+            {{ restaurant.description|truncatechars:40 }}
+          </p>
+
+          <p class="location">{{ restaurant.address }}</p>
+
+          <div class="meta">
+            <span>
+              {{ restaurant.opening_time }} - {{ restaurant.closing_time }}
+            </span>
+            <span>{{ restaurant.phone_number }}</span>
+          </div>
+        </div>
+
+      </div>
+      {% empty %}
+      <p class="empty-text">No restaurants available.</p>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+
+
+</main>
 {% endblock %}
