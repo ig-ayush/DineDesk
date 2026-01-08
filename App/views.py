@@ -112,7 +112,8 @@ def add_restaurent(request):
             description=description
         )
 
-        return render(request, 'admin/add_restaurant.html') 
+        restaurants = Restaurant.objects.all()
+        return render(request, 'admin/admin_restaurants.html', {'restaurants' : restaurants})
 
     return render(request, 'admin/add_restaurant.html') 
 
