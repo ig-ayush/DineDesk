@@ -11,7 +11,10 @@ urlpatterns = [
     path('logout-account', views.logout_account),
     path('admin-dashboard', views.admin_dashboard, name='admin-dashboard'),
     path('add-restaurant', views.add_restaurent, name='add-restaurant'),
-    path('admin-restaurant', views.show_restaurant, name='admin-restaurant')
+    path('admin-restaurant', views.show_restaurant, name='admin-restaurant'),
+    path('edit-restaurant/<int:restaurant_id>', views.edit_restaurant, name='edit-restaurant'),
+    path('admin-menu/<int:restaurant_id>', views.admin_menu, name='admin-menu'),
+    path('add-dish/<int:restaurant_id>', views.add_dish, name='add-dish')
 ]
 
 if settings.DEBUG:

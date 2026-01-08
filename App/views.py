@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Restaurant
+from .models import Restaurant, Dish
 
 
 def index(request):
@@ -120,3 +120,58 @@ def show_restaurant(request):
     
     restaurants = Restaurant.objects.all()
     return render(request, 'admin/admin_restaurants.html', {'restaurants' : restaurants})
+
+
+def edit_restaurant(request, restaurant_id):
+
+    restaurantList = Restaurant.objects.get(id = restaurant_id)
+    if request.method == "POST":
+        name = request.POST.get('name')
+        address = request.POST.get('address')
+        opening_time = request.POST.get('opening_time')
+        closing_time = request.POST.get('closing_time')
+        phone_number = request.POST.get('phone_number')
+        rating = request.POST.get('rating')
+        description = request.POST.get('description')
+        image = request.FILES.get('image') 
+
+        restaurantList.name = name
+        restaurantList.address = address
+        restaurantList.opening_time = opening_time
+        restaurantList.closing_time = closing_time
+        restaurantList.phone_number = phone_number
+        restaurantList.rating = rating
+        restaurantList.description = description
+        restaurantList.image = image
+
+        restaurantList.save()
+
+        restaurants = Restaurant.objects.all()
+        return render(request, 'admin/admin_restaurants.html', {'restaurants' : restaurants})
+    
+    restaurants = Restaurant.objects.all()
+    return render(request, 'admin/edit_restaurant.html', {'restaurantList': restaurantList})
+        
+
+def admin_menu(request, restaurant_id):
+    restaurant = Restaurant.objects.get(id= restaurant_id)
+    dishes = restaurant.dishes.all()
+    return render(request, 'admin/manage_menu.html', {'restaurant': restaurant,'dishes': dishes})
+
+def add_dish(request, restaurant_id):
+    
+    restaurant = Restaurant.objects.get(id= restaurant_id)
+    if request.method == "POST":
+
+        Dish.objects.create(
+            restaurant=restaurant,
+            name=request.POST.get('name'),
+            image=request.FILES.get('image'),
+            price=request.POST.get('price'),
+            description=request.POST.get('description'),
+            dish_type=request.POST.get('dish_type'),
+            category=request.POST.get('category'),
+        )
+
+        return redirect('admin-menu', restaurant_id = restaurant.id)
+    return render(request, 'admin/add_dish.html', {'restaurant' : restaurant})

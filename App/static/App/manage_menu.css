@@ -1,0 +1,165 @@
+.store-page {
+  background: #f6f6f6;
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+.store-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.menu-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.dish-card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.08) 0 6px 20px;
+}
+
+.dish-card:hover {
+  transform: translateY(-6px);
+  box-shadow: rgba(0, 0, 0, 0.15) 0 10px 30px;
+}
+
+.image-box {
+  height: 180px;
+  overflow: hidden;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-row h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.badge {
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.badge.veg {
+  background-color: #1e7e34;
+}
+
+.badge.non-veg {
+  background-color: #dc3545;
+}
+
+.category {
+  font-size: 14px;
+  color: #666;
+  margin: 6px 0;
+}
+
+.description {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.admin-actions {
+  display: flex;
+  margin-top: 10px;
+}
+
+.admin-actions .btn {
+  flex: 1;
+  padding: 8px 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.empty-text {
+  grid-column: span 3;
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}
+a {
+  text-decoration: none;
+}
+button {
+  display: block;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: 1px solid;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+button:hover {
+  color: #ffffff;
+  background-color: #1a1a1a;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 15px;
+  transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .dish-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .dish-grid {
+    grid-template-columns: 1fr;
+  }
+}
