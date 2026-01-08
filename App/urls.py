@@ -14,7 +14,10 @@ urlpatterns = [
     path('admin-restaurant', views.show_restaurant, name='admin-restaurant'),
     path('edit-restaurant/<int:restaurant_id>', views.edit_restaurant, name='edit-restaurant'),
     path('admin-menu/<int:restaurant_id>', views.admin_menu, name='admin-menu'),
-    path('add-dish/<int:restaurant_id>', views.add_dish, name='add-dish')
+    path('add-dish/<int:restaurant_id>', views.add_dish, name='add-dish'),
+    path('edit-dish/<int:dish_id>', views.edit_dish, name='edit-dish'),
+    path('delete-restaurant/<int:restaurant_id>', views.delete_restaurant, name='delete-restaurant'),
+    path('delete-dish/<int:dish_id>', views.delete_dish, name='delete-dish')
 ]
 
 if settings.DEBUG:

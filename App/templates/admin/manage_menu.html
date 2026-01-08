@@ -36,10 +36,10 @@
           <p class="price">₹ {{ dish.price }}</p>
 
           <div class="admin-actions">
-            <a href="/" class="btn">
+            <a href="{% url 'edit-dish' dish.id %}" class="btn">
               <button>Edit</button>
             </a>
-            <a href="/" class="btn">
+            <a href="{% url 'delete-dish' dish.id %}" class="btn">
               <button>Delete</button>
             </a>
           </div>
