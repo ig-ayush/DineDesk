@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'App/manage_menu.css' %}" />
+
+<main class="store-page">
+  <div class="store-container">
+    <div class="menu-header">
+      <h2>{{ restaurant.name }} – Dishes</h2>
+    </div>
+
+    <div class="dish-grid">
+      {% for dish in dishes %}
+      <div class="dish-card">
+
+        <div class="image-box">
+          <img src="{{ dish.image.url }}" alt="{{ dish.name }}" />
+
+          <!-- Hover Add to Cart Button -->
+          <a
+            href="/"
+            class="add-cart-btn"
+          >
+            Add to Cart
+          </a>
+        </div>
+
+        <div class="card-body">
+          <div class="title-row">
+            <h3>{{ dish.name }}</h3>
+
+            {% if dish.dish_type == 'veg' %}
+            <span class="badge veg">Veg</span>
+            {% else %}
+            <span class="badge non-veg">Non-Veg</span>
+            {% endif %}
+          </div>
+
+          <p class="category">{{ dish.get_category_display }}</p>
+
+          <p class="description">
+            {{ dish.description|default:"No description"|truncatechars:60 }}
+          </p>
+
+          <p class="price">₹ {{ dish.price }}</p>
+        </div>
+
+      </div>
+      {% empty %}
+      <p class="empty-text">No dishes added yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+
+{% endblock %}

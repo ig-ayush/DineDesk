@@ -163,3 +163,39 @@ button:active {
     grid-template-columns: 1fr;
   }
 }
+
+.image-box {
+  position: relative;
+}
+
+/* Add to Cart button */
+.add-cart-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border-radius: 8px;
+
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+}
+
+/* Show button on hover */
+.dish-card:hover .add-cart-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover effect */
+.add-cart-btn:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
