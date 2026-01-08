@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'App/manage_menu.css' %}" />
+<main class="store-page">
+  <div class="store-container">
+    <div class="menu-header">
+      <h2>{{ restaurant.name }} – Dishes</h2>
+      <a href="{% url 'add-dish' restaurant.id %}" class="btn"
+        ><button>Add Dish</button></a
+      >
+    </div>
+
+    <div class="dish-grid">
+      {% for dish in dishes %}
+      <div class="dish-card">
+        <div class="image-box">
+          <img src="{{ dish.image.url }}" alt="{{ dish.name }}" />
+        </div>
+
+        <div class="card-body">
+          <div class="title-row">
+            <h3>{{ dish.name }}</h3>
+
+            {% if dish.dish_type == 'veg' %}
+            <span class="badge veg">Veg</span>
+            {% else %}
+            <span class="badge non-veg">Non-Veg</span>
+            {% endif %}
+          </div>
+
+          <p class="category">{{ dish.get_category_display }}</p>
+
+          <p class="description">
+            {{ dish.description|default:"No description"|truncatechars:60 }}
+          </p>
+
+          <p class="price">₹ {{ dish.price }}</p>
+
+          <div class="admin-actions">
+            <a href="/" class="btn">
+              <button>Edit</button>
+            </a>
+            <a href="/" class="btn">
+              <button>Delete</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p class="empty-text">No dishes added yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %}

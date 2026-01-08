@@ -1,0 +1,106 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'App/add_restaurant.css' %}" />
+<main class="page-wrapper">
+  <div class="form-wrapper">
+    <h1 class="form-title">Edit Restaurant</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <!-- Restaurant Name -->
+      <div class="input-container">
+        <input
+          type="text"
+          name="name"
+          class="input-field"
+          placeholder="Restaurant Name"
+          required
+          value="{{restaurantList.name}}"
+        />
+        <label class="input-label">Restaurant Name</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Address -->
+      <div class="input-container">
+        <input
+          type="text"
+          name="address"
+          class="input-field"
+          placeholder="Address"
+          required
+          value="{{restaurantList.address}}"
+          />
+          <label class="input-label">Address</label>
+          <span class="input-highlight"></span>
+        </div>
+        
+        <!-- Opening Time -->
+        <div class="input-container">
+            <input type="time" name="opening_time" class="input-field" required
+            value="{{restaurantList.opening_time}}"/>
+            <label class="input-label">Opening Time</label>
+            <span class="input-highlight"></span>
+      </div>
+
+      <!-- Closing Time -->
+      <div class="input-container">
+        <input type="time" name="closing_time" class="input-field" required value="{{restaurantList.closing_time}}" />
+        <label class="input-label">Closing Time</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="input-container">
+        <input
+          type="tel"
+          name="phone_number"
+          class="input-field"
+          placeholder="Phone Number"
+          required
+          maxlength="10"
+          value="{{restaurantList.phone_number}}"
+        />
+        <label class="input-label">Phone Number</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Rating -->
+      <div class="input-container">
+        <input
+          type="number"
+          step="0.1"
+          name="rating"
+          class="input-field"
+          placeholder="Rating"
+          required
+          value="{{restaurantList.rating}}"
+        />
+        <label class="input-label">Rating</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Image -->
+      <div class="input-container">
+        <input type="file" name="image" class="input-field" required value="{{restaurantList.image}}"/>
+        <label class="input-label">Restaurant Image</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Description -->
+      <div class="input-container">
+        <input
+          type="text"
+          name="description"
+          class="input-field"
+          placeholder="Description"
+          value="{{restaurantList.description}}"
+        />
+        <label class="input-label">Description</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <button type="submit">Add Restaurant</button>
+    </form>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'App/add_restaurant.css' %}" />
+<main class="page-wrapper">
+  <div class="form-wrapper">
+    <h1 class="form-title">Add Dish</h1>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <!-- Dish Name -->
+      <div class="input-container">
+        <input
+          type="text"
+          name="name"
+          class="input-field"
+          placeholder="Dish Name"
+          required
+        />
+        <label class="input-label">Dish Name</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Image -->
+      <div class="input-container">
+        <input type="file" name="image" class="input-field" required />
+        <label class="input-label">Dish Image</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Price -->
+      <div class="input-container">
+        <input
+          type="number"
+          name="price"
+          class="input-field"
+          placeholder="Price"
+          required
+        />
+        <label class="input-label">Price</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Description -->
+      <div class="input-container">
+        <input
+          type="text"
+          name="description"
+          class="input-field"
+          placeholder="Description"
+        />
+        <label class="input-label">Description</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Veg / Non Veg -->
+      <div class="input-container">
+        <select name="dish_type" class="input-field" required>
+          <option value="" disabled selected>Select Dish Type</option>
+          <option value="veg">Veg</option>
+          <option value="non-veg">Non-Veg</option>
+        </select>
+        <label class="input-label">Dish Type</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <!-- Starters -->
+      <div class="input-container">
+        <select name="category" class="input-field" required>
+          <option value="" disabled selected>Select Category</option>
+          <option value="starter">Starter</option>
+          <option value="main">Main Course</option>
+          <option value="dessert">Dessert</option>
+          <option value="beverage">Beverage</option>
+        </select>
+        <label class="input-label">Category</label>
+        <span class="input-highlight"></span>
+      </div>
+
+      <button type="submit">Save Dish</button>
+    </form>
+  </div>
+</main>
+{% endblock %}
