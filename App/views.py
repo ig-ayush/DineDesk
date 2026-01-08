@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -149,7 +149,6 @@ def edit_restaurant(request, restaurant_id):
         restaurants = Restaurant.objects.all()
         return render(request, 'admin/admin_restaurants.html', {'restaurants' : restaurants})
     
-    restaurants = Restaurant.objects.all()
     return render(request, 'admin/edit_restaurant.html', {'restaurantList': restaurantList})
         
 
@@ -175,3 +174,41 @@ def add_dish(request, restaurant_id):
 
         return redirect('admin-menu', restaurant_id = restaurant.id)
     return render(request, 'admin/add_dish.html', {'restaurant' : restaurant})
+
+def edit_dish(request, dish_id):
+    dish = get_object_or_404(Dish, id=dish_id)
+    restaurant = dish.restaurant
+
+    if request.method == 'POST':
+        dish.name = request.POST.get('name')
+        dish.price = request.POST.get('price')
+        dish.description = request.POST.get('description')
+        dish.dish_type = request.POST.get('dish_type')
+        dish.category = request.POST.get('category')
+
+        if request.FILES.get('image'):
+            dish.image = request.FILES.get('image')
+
+        dish.save()
+
+        return redirect('admin-menu', restaurant_id=restaurant.id)
+
+    return render(request, 'admin/edit_dish.html', {
+        'dishList': dish
+    })
+
+def delete_restaurant(request, restaurant_id):
+
+    restaurant = get_object_or_404(Restaurant, id= restaurant_id)
+    restaurant.delete()
+
+    return redirect('admin-restaurant')
+
+def delete_dish(request, dish_id):
+    dish = get_object_or_404(Dish, id=dish_id)
+    restaurant_id = dish.restaurant.id
+
+    dish.delete()
+
+    return redirect('admin-menu', restaurant_id=restaurant_id)
+
