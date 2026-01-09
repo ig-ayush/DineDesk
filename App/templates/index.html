@@ -1,17 +1,21 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 <link rel="stylesheet" href="{% static 'App/homePage.css' %}" />
 <link rel="stylesheet" href="{% static 'App/show_restaurant.css' %}" />
-<section class="hero">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<section class="hero" 
+ data-aos="zoom-out-left"
+  data-aos-duration="2000"
+>
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
-    <h1>Discover & Order <span>Delicious Food</span></h1>
+    <h1 data-aos="fade-up" data-aos-duration="2000">Discover & Order <span>Delicious Food</span></h1>
 
-    <p>
+    <p data-aos="fade-up" data-aos-duration="2000">
       Explore healthy veg & non-veg dishes from the best restaurants near you.
     </p>
 
-    <a href="#restaurants" class="hero-btn"> Explore Restaurants </a>
+    <a href="#restaurants" class="hero-btn" data-aos="fade-up" data-aos-duration="2000"> Explore Restaurants </a>
   </div>
 </section>
 
@@ -19,7 +23,7 @@
   <div class="store-container">
     <div class="restaurant-grid">
       {% for restaurant in restaurants %}
-      <div class="restaurant-card">
+      <div class="restaurant-card" data-aos="fade-up" data-aos-duration="2000">
 
         <div class="image-box">
           {% if restaurant.image %}
@@ -62,7 +66,9 @@
     </div>
   </div>
 </main>
-
-
 </main>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 {% endblock %}
