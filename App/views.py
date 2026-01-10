@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Restaurant, Dish
+from .models import Restaurant, Dish, Cart, CartItem
 
 
 def index(request):
@@ -218,3 +218,39 @@ def restaurant_menu(request, restaurant_id):
     restaurant = Restaurant.objects.get(id= restaurant_id)
     dishes = restaurant.dishes.all()
     return render(request, 'menu.html', {'restaurant': restaurant,'dishes': dishes})
+
+@login_required
+def add_cart(request, dish_id):
+    dish = get_object_or_404(Dish, id=dish_id)
+
+    cart, created = Cart.objects.get_or_create(user= request.user)
+
+    cart_item, created = CartItem.objects.get_or_create(
+        cart= cart,
+        dish= dish
+    )
+
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+    
+    return redirect('user-cart')
+
+@login_required
+def cart_view(request):
+    cart = Cart.objects.get(user= request.user)
+    cart_items = cart.items.all()
+    total_price = sum(item.total_price() for item in cart_items)
+    
+    return render(request, 'cart.html',
+                   {'cart_items': cart_items,
+                    'total_price': total_price
+                    })
+
+def remove_item(request, item_id):
+    CartItem.objects.filter(id= item_id, cart__user= request.user).delete()
+    return redirect('user-cart')
+
+def clear_cart(request):
+    CartItem.objects.filter(cart__user= request.user).delete()
+    return redirect('user-cart')
