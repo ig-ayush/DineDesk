@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'App/cart.css' %}" />
+
+<main class="store-page">
+  <div class="store-container">
+    <div class="menu-header">
+      <h2>Your Cart</h2>
+      <span class="cart-total">Total: ₹ {{ total_price }}</span>
+    </div>
+
+    <div class="dish-grid">
+      {% for item in cart_items %}
+      <div class="dish-card">
+        <div class="image-box">
+          <img src="{{ item.dish.image.url }}" alt="{{ item.dish.name }}" />
+
+          <!-- Hover Remove Button -->
+          <a
+            href="{% url 'remove-from-cart' item.dish.id %}"
+            class="remove-cart-btn"
+          >
+            Remove
+          </a>
+        </div>
+
+        <div class="card-body">
+          <div class="title-row">
+            <h3>{{ item.dish.name }}</h3>
+
+            {% if item.dish.dish_type == 'veg' %}
+            <span class="badge veg">Veg</span>
+            {% else %}
+            <span class="badge non-veg">Non-Veg</span>
+            {% endif %}
+          </div>
+
+          <p class="category">{{ item.dish.get_category_display }}</p>
+
+          <p class="description">
+            {{ item.dish.description|truncatechars:60 }}
+          </p>
+
+          <p class="price">₹ {{ item.dish.price }} × {{ item.quantity }}</p>
+        </div>
+      </div>
+      {% empty %}
+      <p class="empty-text">Your cart is empty.</p>
+      {% endfor %}
+    </div>
+
+    {% if cart_items %}
+    <div class="cart-actions">
+      <a href="{% url 'clear-cart' %}" class="btn danger"> Clear All </a>
+    </div>
+    {% endif %}
+  </div>
+</main>
+
+{% endblock %}

@@ -17,9 +17,8 @@
         <div class="image-box">
           <img src="{{ dish.image.url }}" alt="{{ dish.name }}" />
 
-          <!-- Hover Add to Cart Button -->
           <a
-            href="/"
+            href="{% url 'add-cart' dish.id %}"
             class="add-cart-btn"
           >
             Add to Cart

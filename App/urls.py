@@ -18,7 +18,12 @@ urlpatterns = [
     path('edit-dish/<int:dish_id>', views.edit_dish, name='edit-dish'),
     path('delete-restaurant/<int:restaurant_id>', views.delete_restaurant, name='delete-restaurant'),
     path('delete-dish/<int:dish_id>', views.delete_dish, name='delete-dish'),
-    path('restaurant-menu/<int:restaurant_id>', views.restaurant_menu, name='restaurant-menu')
+    path('restaurant-menu/<int:restaurant_id>', views.restaurant_menu, name='restaurant-menu'),
+    path('add-cart/<int:dish_id>', views.add_cart, name= 'add-cart'),
+    path('user-cart', views.cart_view, name='user-cart'),
+    path('user-cart/remove-item/<int:item_id>/', views.remove_item, name='remove-from-cart'),
+    path('user-cart/clear', views.clear_cart, name= 'clear-cart')
+
 ]
 
 if settings.DEBUG:
