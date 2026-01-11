@@ -1,61 +1,102 @@
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ❌ body styling REMOVED */
 
+/* Page spacing */
 main {
   margin-top: 50px;
-  padding: 80px;
+  padding: 20px;
 }
 
+/* Profile layout */
 .profile {
   width: 100%;
-  height: max-content;
   padding: 20px;
   display: flex;
   align-items: center;
   gap: 30px;
+  background: var(--card-bg);
+  border-radius: 14px;
 }
 
 .pro-pic {
   width: 150px;
   height: 150px;
-  background-image: url(images/image-1.jpg);
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 50%;
+  transition: background-image 0.6s ease-in-out;
 }
 
+/* User info */
 .profile .info h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 500;
-}
-.profile .info h3 {
-    font-size: 2rem;
-  color: #495057;
+  color: var(--text-color);
 }
 
+.profile .info h3 {
+  font-size: 1.4rem;
+  color: var(--muted-text);
+}
+
+/* Logout button */
+.logOut a button {
+  width: 150px;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid var(--text-color);
+}
+
+/* ✅ Correct hover syntax (PURE CSS) */
+.logOut a button:hover {
+  color: #fff;
+  background-color: #ba0b0b;
+  box-shadow: rgba(224, 7, 7, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+/* Section title */
 h2 {
   padding: 10px;
-  margin-left: 50px;
+  margin-left: 20px;
+  color: var(--text-color);
 }
 
-.logOut a button {
-    width: 150px;
-    padding: 20px;
-    font-size: 1.1rem;
-  margin: 50px 0px 0px 30px;
-  font-weight: 500;
-  background-color: #fff;
-  transition: 0.4s;
-  &:hover {
-      color: #fff;
-      background-color: #ba0b0b;
-      box-shadow: rgba(224, 7, 7, 0.25) 0 8px 15px;
-      transform: translateY(-2px);
-      border: none;
-      font-weight: 600;
-    }
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logOut {
+    margin-top: 15px;
+  }
+
+  .profile .info h1 {
+    font-size: 2rem;
+  }
+}
+
+/* ===== DARK MODE TEXT VISIBILITY FIX ===== */
+
+.title-row h3 {
+  color: var(--text-color) !important;
+}
+
+.price {
+  color: var(--text-color) !important;
+}
+
+.category,
+.description {
+  color: var(--muted-text) !important;
 }
 

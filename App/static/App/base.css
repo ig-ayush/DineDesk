@@ -1,83 +1,123 @@
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Switch */
+/* ================= THEME VARIABLES ================= */
+:root {
+  --bg-color: #f9f9f9;
+  --nav-bg: #e5e5e5;
+  --text-color: #1f2937;
+  --card-bg: #ffffff;
+  --footer-bg: #000000;
+  --muted-text: #cccccc;
+}
+
+body.dark-mode {
+  --bg-color: #0f172a;
+  --nav-bg: #020617;
+  --text-color: #e5e7eb;
+  --card-bg: #020617;
+  --footer-bg: #020617;
+  --muted-text: #9ca3af;
+}
+
+/* ================= GLOBAL ================= */
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+.page-content {
+  min-height: 60vh;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  background: var(--nav-bg);
+  padding: 12px 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 60px;
+}
+
+.nav-actions {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-actions li a {
+  font-size: 1.6rem;
+  color: var(--text-color);
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.nav-actions li a:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* ================= TOGGLE SWITCH ================= */
 .switch {
-  font-size: 17px;
   position: relative;
-  display: inline-block;
-  width: 2.5em;
-  height: 1.3em;
+  width: 40px;
+  height: 20px;
 }
 
 .switch input {
   opacity: 0;
-  width: 0;
-  height: 0;
 }
 
 .slider {
   position: absolute;
-  cursor: pointer;
   inset: 0;
-  border: 2px solid #414141;
-  border-radius: 50px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.slider:before {
-  position: absolute;
+.slider::before {
   content: "";
-  height: 0.8rem;
-  width: 0.8rem;
-  left: 0.2em;
-  bottom: 0.1em;
-  background-color: rgb(26, 25, 25);
-  border-radius: inherit;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background: #000;
+  border-radius: 50%;
+  transition: 0.3s;
 }
 
 .switch input:checked + .slider {
-  box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);
-  border: 2px solid #0974f1;
+  background: #0974f1;
 }
 
-.switch input:checked + .slider:before {
-  transform: translateX(1.2em);
+.switch input:checked + .slider::before {
+  transform: translateX(18px);
 }
 
-/* Nav-bar */
-.nav-content {
-  padding: 20px 90px 0px 90px;
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(229, 229, 229);
-}
-
-.nav-content .left-side {
-  width: 20%;
-}
-.nav-content .left-side ol {
-  display: flex;
-  justify-content: space-evenly;
-  list-style: none;
-  font-size: 2rem;
-}
-.nav-content .left-side ol li i {
-  color: #1f2937;
-}
-
-.nav-content .left-side ol li {
-  padding: 12px;
-  border-radius: 10px;
-}
-
-/* Footer */
+/* ================= FOOTER ================= */
 .site-footer {
-  background-color: #000;
+  background: var(--footer-bg);
   color: #fff;
   padding: 50px 0 20px;
   margin-top: 60px;
@@ -95,46 +135,31 @@
 
 .footer-logo {
   font-size: 26px;
-  font-weight: 700;
   margin-bottom: 12px;
 }
 
-.footer-text {
+.footer-text,
+.footer-contact p,
+.footer-links a {
   font-size: 14px;
-  line-height: 1.6;
-  color: #ccc;
-}
-
-.footer-links h4,
-.footer-contact h4 {
-  font-size: 16px;
-  margin-bottom: 12px;
+  color: var(--muted-text);
 }
 
 .footer-links ul {
   list-style: none;
-  padding: 0;
 }
 
-.footer-links ul li {
+.footer-links li {
   margin-bottom: 8px;
 }
 
-.footer-links ul li a {
-  color: #ccc;
+.footer-links a {
   text-decoration: none;
-  font-size: 14px;
   transition: 0.3s;
 }
 
-.footer-links ul li a:hover {
+.footer-links a:hover {
   color: #fff;
-}
-
-.footer-contact p {
-  font-size: 14px;
-  color: #ccc;
-  margin-bottom: 6px;
 }
 
 .footer-bottom {
@@ -146,8 +171,16 @@
   color: #aaa;
 }
 
-/* Responsive */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
+  .logo img {
+    height: 50px;
+  }
+
+  .nav-actions {
+    gap: 14px;
+  }
+
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;

@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'App/profile.css' %}" />
+
 <main>
   <div class="profile" id="profile">
     <div class="pro-pic" id="pro-pic"></div>
@@ -14,5 +15,6 @@
     </div>
   </div>
 </main>
-<h2>Restaurant</h2>
+
+<script src="{% static 'App/script.js' %}"></script>
 {% endblock %}

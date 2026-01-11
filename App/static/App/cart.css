@@ -1,5 +1,6 @@
+/* ================= PAGE ================= */
 .store-page {
-  background: #f6f6f6;
+  background: var(--bg-color);
   min-height: 100vh;
   padding: 40px 0;
 }
@@ -10,6 +11,7 @@
   padding: 0 20px;
 }
 
+/* ================= HEADER ================= */
 .menu-header {
   display: flex;
   justify-content: space-between;
@@ -20,23 +22,25 @@
 .menu-header h2 {
   font-size: 26px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-color);
 }
 
 .cart-total {
   font-size: 18px;
   font-weight: 600;
-  color: #111;
+  color: var(--text-color);
 }
 
+/* ================= GRID ================= */
 .dish-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
+/* ================= CARD ================= */
 .dish-card {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: 14px;
   overflow: hidden;
   transition: 0.3s;
@@ -48,6 +52,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0 10px 30px;
 }
 
+/* ================= IMAGE ================= */
 .image-box {
   height: 180px;
   overflow: hidden;
@@ -60,6 +65,7 @@
   object-fit: cover;
 }
 
+/* ================= CONTENT ================= */
 .card-body {
   padding: 15px;
 }
@@ -73,8 +79,10 @@
 .title-row h3 {
   font-size: 18px;
   font-weight: 600;
+  color: var(--text-color);
 }
 
+/* ================= BADGES ================= */
 .badge {
   padding: 4px 8px;
   font-size: 12px;
@@ -91,15 +99,16 @@
   background-color: #dc3545;
 }
 
+/* ================= TEXT ================= */
 .category {
   font-size: 14px;
-  color: #666;
+  color: var(--muted-text);
   margin: 6px 0;
 }
 
 .description {
   font-size: 13px;
-  color: #777;
+  color: var(--muted-text);
   line-height: 1.4;
   margin-bottom: 10px;
 }
@@ -107,16 +116,18 @@
 .price {
   font-size: 15px;
   font-weight: 600;
+  color: var(--text-color);
 }
 
+/* ================= EMPTY ================= */
 .empty-text {
   grid-column: span 3;
   text-align: center;
   font-size: 18px;
-  color: #777;
+  color: var(--muted-text);
 }
 
-/* Remove Button (Hover) */
+/* ================= REMOVE BUTTON ================= */
 .remove-cart-btn {
   position: absolute;
   bottom: 10px;
@@ -126,7 +137,7 @@
   font-size: 14px;
   font-weight: 600;
 
-  background-color: #ffffff;
+  background-color: var(--card-bg);
   color: #dc3545;
   border-radius: 8px;
 
@@ -146,7 +157,7 @@
   color: #ffffff;
 }
 
-/* Cart Actions */
+/* ================= CART ACTIONS ================= */
 .cart-actions {
   margin-top: 40px;
   text-align: center;
@@ -156,10 +167,10 @@
   padding: 12px 30px;
   font-size: 1.1rem;
   font-weight: 700;
-  border: 1px solid;
+  border: 1px solid var(--text-color);
   border-radius: 8px;
-  background-color: #ffffff;
-  color: #1a1a1a;
+  background-color: transparent;
+  color: var(--text-color);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.4s ease;
@@ -175,7 +186,7 @@
   color: #ffffff;
 }
 
-/* Responsive */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 992px) {
   .dish-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -1,3 +1,4 @@
+/* ================= HERO ================= */
 .hero {
   position: relative;
   width: 100%;
@@ -11,13 +12,13 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .hero-content {
   position: relative;
   text-align: center;
-  color: #ffffff;
+  color: #ffffff; /* hero stays bright intentionally */
   max-width: 800px;
   padding: 20px;
 }
@@ -38,6 +39,7 @@
   color: #eaeaea;
 }
 
+/* Hero button */
 .hero-btn {
   display: inline-block;
   margin-top: 30px;
@@ -56,17 +58,7 @@
   transform: translateY(-3px);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-}
-
+/* ================= RESTAURANT CARD OVERLAY ================= */
 .image-box {
   position: relative;
 }
@@ -81,8 +73,8 @@
   font-size: 14px;
   font-weight: 600;
 
-  background-color: #ffffff;
-  color: #1a1a1a;
+  background-color: var(--card-bg);
+  color: var(--text-color);
   border-radius: 8px;
 
   text-decoration: none;
@@ -99,6 +91,21 @@
 
 /* Hover effect */
 .view-menu-btn:hover {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero {
+    height: 85vh;
+  }
 }

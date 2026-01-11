@@ -9,87 +9,85 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
+
+    <title>DineDesk</title>
   </head>
+
   <body>
-    <!-- Navbar -->
-    <nav>
-      <div class="nav-content">
-        <div class="right-side">
-          {% load static %}
-          <a href="/">
-            <img
-            src="{% static 'App/logo.svg' %}"
-            alt="DineDesk Logo"
-            height="70"
-          />
-          </a>
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+      <div class="nav-container">
+        <!-- Logo -->
+        <a href="/" class="logo">
+          <img src="{% static 'App/logo.svg' %}" alt="DineDesk Logo" />
+        </a>
+
+        <!-- Actions -->
+        <ul class="nav-actions">
+          <li>
+            <a href="{% url 'user-cart' %}" title="Cart">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+          </li>
+
+          <li>
+            <a href="profile" title="Profile">
+              <i class="fa-solid fa-user"></i>
+            </a>
+          </li>
+
+          <li>
+            <label class="switch">
+              <input type="checkbox" id="theme-toggle" />
+              <span class="slider"></span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="page-content">
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h2 class="footer-logo">DineDesk</h2>
+          <p class="footer-text">
+            Discover restaurants, explore menus, and order your favorite dishes
+            with ease. DineDesk connects food lovers with great dining experiences.
+          </p>
         </div>
-        <div class="left-side">
-          <ol class="nav-options">
-            <li class="cart">
-              <a href="{% url 'user-cart' %}" title="cart" id="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
-              </a>
-            </li>
-            <li class="profile">
-              <a href="profile" title="profile" id="profile">
-                <i class="fa-solid fa-user"></i>
-              </a>
-            </li>
-            <li>
-              <label class="switch">
-                <input type="checkbox" />
-                <span class="slider"></span>
-              </label>
-            </li>
-          </ol>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Restaurants</a></li>
+            <li><a href="#">My Orders</a></li>
+            <li><a href="#">Profile</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Email: ig.ayushbuilds@gmail.com</p>
+          <p>Location: India</p>
         </div>
       </div>
-    </nav>
 
-    {% block content %} {% endblock %}
+      <div class="footer-bottom">
+        <p>© 2026 DineDesk. All rights reserved.</p>
+      </div>
+    </footer>
 
-    <!-- Footer -->
-   <footer class="site-footer">
-  <div class="footer-container">
-
-    <!-- Left: Logo + About -->
-    <div class="footer-brand">
-      <h2 class="footer-logo">DineDesk</h2>
-      <p class="footer-text">
-        Discover restaurants, explore menus, and order your favorite dishes
-        with ease. DineDesk connects food lovers with great dining experiences.
-      </p>
-    </div>
-
-    <!-- Middle: Quick Links -->
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="#">Restaurants</a></li>
-        <li><a href="#">My Orders</a></li>
-        <li><a href="#">Profile</a></li>
-      </ul>
-    </div>
-
-    <!-- Right: Contact -->
-    <div class="footer-contact">
-      <h4>Contact</h4>
-      <p>Email: ig.ayushbuilds@gmail.com</p>
-      <p>Location: India</p>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2026 DineDesk. All rights reserved.</p>
-  </div>
-</footer>
-
+    <!-- ================= JS ================= -->
+    <script src="{% static 'App/theam.js' %}"></script>
   </body>
 </html>

@@ -1,52 +1,43 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-{% load static  %}
 <link rel="stylesheet" href="{% static 'App/login.css' %}" />
- <main>
-    <div class="container-fluid">
-      <form class="auth" id="auth" method="post">
 
-        {% csrf_token %}
-        <h1 style="margin-bottom: 10px;">Welcome Back!</h1>
-        <div class="input-container">
-          <input
-            id="email"
-            type="email"
-            class="input-field"
-            placeholder="Enter your email"
-            name="email"
-            required
-          />
-          <label for="email" class="input-label">Enter email</label>
-          <span class="input-highlight"></span>
-        </div>
+<section class="auth-wrapper">
+  <form class="auth" method="post">
+    {% csrf_token %}
 
-        <div class="input-container">
-          <input
-            id="password"
-            type="password"
-            class="input-field"
-            placeholder="Enter your password"
-            name="password"
-            required
-          />
-          <label for="password" class="input-label">Enter password</label>
-          <span class="input-highlight"></span>
-        </div>
+    <h1>Welcome Back!</h1>
 
-        <button id="logIn" type="submit">Log In</button>
-
-        <p title="Sign Up" style="font-size: 1.1rem; font-weight: 600;">
-          Don’t have an account?
-          <span>
-            <a href="/signup-account" id="signUp">Sign up</a>
-          </span>
-          now!
-        </p>
-      </form>
+    <div class="input-container">
+      <input
+        type="email"
+        class="input-field"
+        name="email"
+        required
+      />
+      <label class="input-label">Enter email</label>
+      <span class="input-highlight"></span>
     </div>
-  </div>
-</main>
 
+    <div class="input-container">
+      <input
+        type="password"
+        class="input-field"
+        name="password"
+        required
+      />
+      <label class="input-label">Enter password</label>
+      <span class="input-highlight"></span>
+    </div>
+
+    <button type="submit">Log In</button>
+
+    <p>
+      Don’t have an account?
+      <a href="/signup-account">Sign up</a>
+    </p>
+  </form>
+</section>
 {% endblock %}

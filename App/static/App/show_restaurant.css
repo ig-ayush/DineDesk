@@ -1,5 +1,5 @@
 .store-page {
-  background: #f6f6f6;
+  background: var(--bg-color);
   min-height: 100vh;
   padding: 40px 0;
 }
@@ -17,7 +17,7 @@
 }
 
 .restaurant-card {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 14px;
   overflow: hidden;
   transition: 0.3s;
@@ -26,7 +26,6 @@
 
 .restaurant-card:hover {
   transform: translateY(-6px);
-  box-shadow: rgba(0, 0, 0, 0.15) 0 10px 30px;
 }
 
 .image-box {
@@ -53,7 +52,7 @@
 .title-row h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-color);
 }
 
 .rating {
@@ -64,30 +63,41 @@
   border-radius: 6px;
 }
 
-.category {
+.category,
+.location,
+.meta {
   font-size: 14px;
-  color: #666;
-  margin: 6px 0;
-}
-
-.location {
-  font-size: 14px;
-  color: #888;
+  color: var(--muted-text);
 }
 
 .meta {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
-  color: #555;
   margin-top: 10px;
 }
 
-.empty-text {
-  grid-column: span 3;
-  text-align: center;
-  font-size: 18px;
-  color: #777;
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
 }
 
 /* Responsive */
@@ -101,37 +111,4 @@
   .restaurant-grid {
     grid-template-columns: 1fr;
   }
-}
-
-
-.admin-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.btn {
-  display: inline-block;
-  margin: 15px auto 15px;
-  padding: 5px 15px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border: 1px solid;
-  border-radius: 8px;
-  background-color: #ffffff;
-  color: #1a1a1a;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.4s ease;
-}
-
-.btn:hover {
-  color: #ffffff;
-  background-color: #1a1a1a;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
-}
-
-.btn:active {
-  box-shadow: none;
-  transform: translateY(0);
 }

@@ -1,10 +1,19 @@
-const profile_pic = ["image-1.jpg", "image-2.jpg"];
-const pic_con = document.getElementById("pro-pic");
+document.addEventListener("DOMContentLoaded", () => {
+  const images = ["image-1.jpg", "image-2.jpg", "image-3.jpg"];
 
-function switchImage() {
-  const randomImage = Math.floor(Math.random() * profile_pic.length);
-  console.log(profile_pic[randomImage]);
-  pic_con.style.backgroundImage = `url(images/${profile_pic[randomImage]})`;
-}
+  const pic = document.getElementById("pro-pic");
 
-setInterval(switchImage, 5000);
+  if (!pic) return;
+
+  let index = 0;
+
+  function changeImage() {
+    console.log("first");
+    pic.style.backgroundImage = `url(/static/App/images/${images[index]})`;
+    index = (index + 1) % images.length;
+  }
+
+  changeImage();
+
+  setInterval(changeImage, 5000);
+});

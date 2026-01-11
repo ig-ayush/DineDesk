@@ -1,5 +1,6 @@
+/* ================= PAGE ================= */
 .store-page {
-  background: #f6f6f6;
+  background: var(--bg-color);
   min-height: 100vh;
   padding: 40px 0;
 }
@@ -10,6 +11,7 @@
   padding: 0 20px;
 }
 
+/* ================= HEADER ================= */
 .menu-header {
   display: flex;
   justify-content: space-between;
@@ -20,31 +22,36 @@
 .menu-header h2 {
   font-size: 26px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-color);
 }
 
+/* ================= GRID ================= */
 .dish-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
+/* ================= CARD ================= */
 .dish-card {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: 14px;
   overflow: hidden;
-  transition: 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: rgba(0, 0, 0, 0.08) 0 6px 20px;
 }
 
+/* Card hover = ONLY lift (no color change) */
 .dish-card:hover {
   transform: translateY(-6px);
   box-shadow: rgba(0, 0, 0, 0.15) 0 10px 30px;
 }
 
+/* ================= IMAGE ================= */
 .image-box {
   height: 180px;
   overflow: hidden;
+  position: relative;
 }
 
 .image-box img {
@@ -53,6 +60,7 @@
   object-fit: cover;
 }
 
+/* ================= CONTENT ================= */
 .card-body {
   padding: 15px;
 }
@@ -66,9 +74,10 @@
 .title-row h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-color);
 }
 
+/* ================= BADGES ================= */
 .badge {
   padding: 4px 8px;
   font-size: 12px;
@@ -85,73 +94,71 @@
   background-color: #dc3545;
 }
 
-.category {
+/* ================= TEXT ================= */
+.category,
+.description {
   font-size: 14px;
-  color: #666;
+  color: var(--muted-text);
   margin: 6px 0;
 }
 
 .description {
   font-size: 13px;
-  color: #777;
   line-height: 1.4;
-  margin-bottom: 10px;
 }
 
 .price {
   font-size: 15px;
   font-weight: 600;
-  color: #111;
+  color: var(--text-color);
 }
 
+/* ================= ADMIN ACTIONS ================= */
 .admin-actions {
   display: flex;
-  margin-top: 10px;
+  gap: 10px;
+  margin-top: 12px;
 }
 
+/* Anchor wrapper (NO hover effect here) */
 .admin-actions .btn {
-  flex: 1;
-  padding: 8px 0;
-  font-size: 14px;
-  text-align: center;
+  text-decoration: none;
 }
 
+/* REAL button styling */
+.admin-actions .btn button {
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+
+/* Hover ONLY affects button */
+.admin-actions .btn button:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+  transform: translateY(-2px);
+}
+
+/* ================= EMPTY ================= */
 .empty-text {
   grid-column: span 3;
   text-align: center;
   font-size: 18px;
-  color: #777;
+  color: var(--muted-text);
 }
+
+/* ================= LINKS ================= */
 a {
   text-decoration: none;
 }
-button {
-  display: block;
-  padding: 10px 25px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border: 1px solid;
-  border-radius: 8px;
-  background-color: #ffffff;
-  color: #1a1a1a;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
 
-button:hover {
-  color: #ffffff;
-  background-color: #1a1a1a;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 15px;
-  transform: translateY(-2px);
-}
-
-button:active {
-  box-shadow: none;
-  transform: translateY(0);
-}
-
-
-/* Responsive */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 992px) {
   .dish-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -162,40 +169,10 @@ button:active {
   .dish-grid {
     grid-template-columns: 1fr;
   }
-}
 
-.image-box {
-  position: relative;
-}
-
-/* Add to Cart button */
-.add-cart-btn {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-
-  padding: 6px 14px;
-  font-size: 14px;
-  font-weight: 600;
-
-  background-color: #ffffff;
-  color: #1a1a1a;
-  border-radius: 8px;
-
-  text-decoration: none;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: all 0.3s ease;
-}
-
-/* Show button on hover */
-.dish-card:hover .add-cart-btn {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Hover effect */
-.add-cart-btn:hover {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  .menu-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
 }
