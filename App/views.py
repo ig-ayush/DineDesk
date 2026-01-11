@@ -234,7 +234,7 @@ def add_cart(request, dish_id):
         cart_item.quantity += 1
         cart_item.save()
     
-    return redirect('user-cart')
+    return HttpResponse("Dish added to cart")
 
 @login_required
 def cart_view(request):
@@ -247,10 +247,12 @@ def cart_view(request):
                     'total_price': total_price
                     })
 
+@login_required
 def remove_item(request, item_id):
-    CartItem.objects.filter(id= item_id, cart__user= request.user).delete()
+    CartItem.objects.filter(id=item_id, cart__user=request.user).delete()
     return redirect('user-cart')
 
+@login_required
 def clear_cart(request):
     CartItem.objects.filter(cart__user= request.user).delete()
     return redirect('user-cart')
