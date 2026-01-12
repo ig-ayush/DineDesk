@@ -1,7 +1,4 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'App/login.css' %}" />
 
 <section class="auth-wrapper">
@@ -11,23 +8,13 @@
     <h1>Welcome Back!</h1>
 
     <div class="input-container">
-      <input
-        type="email"
-        class="input-field"
-        name="email"
-        required
-      />
+      <input type="email" class="input-field" name="email" required />
       <label class="input-label">Enter email</label>
       <span class="input-highlight"></span>
     </div>
 
     <div class="input-container">
-      <input
-        type="password"
-        class="input-field"
-        name="password"
-        required
-      />
+      <input type="password" class="input-field" name="password" required />
       <label class="input-label">Enter password</label>
       <span class="input-highlight"></span>
     </div>

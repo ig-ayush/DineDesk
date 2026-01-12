@@ -15,7 +15,6 @@
         <div class="image-box">
           <img src="{{ item.dish.image.url }}" alt="{{ item.dish.name }}" />
 
-          <!-- Hover Remove Button -->
           <a
             href="{% url 'remove-from-cart' item.id %}"
             class="remove-cart-btn"

@@ -1,11 +1,7 @@
-/* ❌ body styling REMOVED on purpose */
-
-/* Page spacing */
 main {
   margin-top: 80px;
 }
 
-/* Center form */
 .container-fluid {
   min-height: 70vh;
   display: flex;
@@ -13,7 +9,6 @@ main {
   align-items: center;
 }
 
-/* Signup card */
 .auth {
   width: 100%;
   max-width: 600px;
@@ -27,20 +22,17 @@ main {
   gap: 15px;
 }
 
-/* Input grid */
 .input-con {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* Input container */
 .input-container {
   position: relative;
   margin: 20px;
 }
 
-/* Input field */
 .input-field {
   width: 100%;
   padding: 10px 5px;
@@ -52,7 +44,6 @@ main {
   outline: none;
 }
 
-/* Label */
 .input-label {
   position: absolute;
   top: 10px;
@@ -63,7 +54,6 @@ main {
   transition: 0.3s;
 }
 
-/* Highlight */
 .input-highlight {
   position: absolute;
   bottom: 0;
@@ -74,7 +64,6 @@ main {
   transition: 0.3s;
 }
 
-/* Focus animation */
 .input-field:focus + .input-label,
 .input-field:not(:placeholder-shown) + .input-label {
   top: -10px;
@@ -86,7 +75,6 @@ main {
   width: 100%;
 }
 
-/* Button */
 button {
   width: 140px;
   padding: 12px;
@@ -104,14 +92,12 @@ button:hover {
   opacity: 0.9;
 }
 
-/* Links */
 .auth a {
   color: #0974f1;
   font-weight: 700;
   text-decoration: underline;
 }
 
-/* Responsive */
 @media (max-width: 700px) {
   .input-con {
     grid-template-columns: 1fr;

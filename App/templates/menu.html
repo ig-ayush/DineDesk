@@ -1,6 +1,4 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
 <link rel="stylesheet" href="{% static 'App/manage_menu.css' %}" />
 
@@ -13,14 +11,10 @@
     <div class="dish-grid">
       {% for dish in dishes %}
       <div class="dish-card">
-
         <div class="image-box">
           <img src="{{ dish.image.url }}" alt="{{ dish.name }}" />
 
-          <a
-            href="{% url 'add-cart' dish.id %}"
-            class="add-cart-btn"
-          >
+          <a href="{% url 'add-cart' dish.id %}" class="add-cart-btn">
             Add to Cart
           </a>
         </div>
@@ -44,7 +38,6 @@
 
           <p class="price">₹ {{ dish.price }}</p>
         </div>
-
       </div>
       {% empty %}
       <p class="empty-text">No dishes added yet.</p>

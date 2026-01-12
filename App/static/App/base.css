@@ -1,11 +1,9 @@
-/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ================= THEME VARIABLES ================= */
 :root {
   --bg-color: #f9f9f9;
   --nav-bg: #e5e5e5;
@@ -24,7 +22,6 @@ body.dark-mode {
   --muted-text: #9ca3af;
 }
 
-/* ================= GLOBAL ================= */
 body {
   font-family: system-ui, sans-serif;
   background: var(--bg-color);
@@ -36,7 +33,6 @@ body {
   min-height: 60vh;
 }
 
-/* ================= NAVBAR ================= */
 .navbar {
   background: var(--nav-bg);
   padding: 12px 0;
@@ -75,7 +71,6 @@ body {
   background: rgba(0, 0, 0, 0.08);
 }
 
-/* ================= TOGGLE SWITCH ================= */
 .switch {
   position: relative;
   width: 40px;
@@ -115,7 +110,6 @@ body {
   transform: translateX(18px);
 }
 
-/* ================= FOOTER ================= */
 .site-footer {
   background: var(--footer-bg);
   color: #fff;
@@ -171,7 +165,6 @@ body {
   color: #aaa;
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
   .logo img {
     height: 50px;

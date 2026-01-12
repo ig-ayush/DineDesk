@@ -1,12 +1,8 @@
-/* ❌ body styling REMOVED */
-
-/* Page spacing */
 main {
   margin-top: 50px;
   padding: 20px;
 }
 
-/* Profile layout */
 .profile {
   width: 100%;
   padding: 20px;
@@ -27,7 +23,6 @@ main {
   transition: background-image 0.6s ease-in-out;
 }
 
-/* User info */
 .profile .info h1 {
   font-size: 2.5rem;
   font-weight: 500;
@@ -39,7 +34,6 @@ main {
   color: var(--muted-text);
 }
 
-/* Logout button */
 .logOut a button {
   width: 150px;
   padding: 14px;
@@ -54,7 +48,6 @@ main {
   border: 1px solid var(--text-color);
 }
 
-/* ✅ Correct hover syntax (PURE CSS) */
 .logOut a button:hover {
   color: #fff;
   background-color: #ba0b0b;
@@ -62,14 +55,12 @@ main {
   transform: translateY(-2px);
 }
 
-/* Section title */
 h2 {
   padding: 10px;
   margin-left: 20px;
   color: var(--text-color);
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
   .profile {
     flex-direction: column;
@@ -85,8 +76,6 @@ h2 {
   }
 }
 
-/* ===== DARK MODE TEXT VISIBILITY FIX ===== */
-
 .title-row h3 {
   color: var(--text-color) !important;
 }
@@ -99,4 +88,3 @@ h2 {
 .description {
   color: var(--muted-text) !important;
 }
-

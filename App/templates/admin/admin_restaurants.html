@@ -23,12 +23,12 @@
 
           <div class="meta">
             <span
-              >{{ restaurant.opening_time }} - {{ restaurant.closing_time }}</span
+              >{{ restaurant.opening_time }} - {{ restaurant.closing_time
+              }}</span
             >
             <span>{{ restaurant.phone_number }}</span>
           </div>
         </div>
-        <!-- ADMIN ACTIONS -->
         <div class="admin-actions">
           <a href="{% url 'edit-restaurant' restaurant.id %}" class="btn edit"
             >Edit</a
