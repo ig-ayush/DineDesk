@@ -9,7 +9,7 @@ from .models import Restaurant, Dish, Cart, CartItem
 
 def index(request):
     restaurants = Restaurant.objects.all()
-    return render(request, 'index.html', {'restaurants': restaurants})
+    return render(request, 'indxe.html', {'restaurants': restaurants})
 
 @login_required
 def profile_view(request):
